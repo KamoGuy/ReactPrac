@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 
 class Counter extends Component {
-  state = { 
-    count: 0
+  state = {
+    count: 0,
   };
 
   //binding event handlers using contructor or = () => aka: arrow funciton
@@ -12,34 +12,39 @@ class Counter extends Component {
      this.handleIncrement =this.handleIncrement.bind(this);
   } */
 
-  handleIncrement = (product)=>{
+  handleIncrement = (product) => {
     console.log(product);
-    this.setState({count: this.state.count +1});
-  }
-
+    this.setState({ count: this.state.count + 1 });
+  };
 
   render() {
     //handling events practice
+
+    console.log("props", this.props);
     return (
-      <React.Fragment>
-        <span className= {this.getBadgeClasses()}>{this.formatCount()}</span> 
-        <button onClick={() => this.handleIncrement({id : 1})} 
-          className='btn btn-secoundary btn-sm'>Increment</button>
-      </React.Fragment>
+      <div>
+        <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
+        <button
+          onClick={() => this.handleIncrement({ id: 1 })}
+          className="btn btn-secoundary btn-sm"
+        >
+          Increment
+        </button>
+      </div>
     );
   }
 
   getBadgeClasses() {
-    let classes = 'badge m-2 badge-';
-    classes += (this.state.count === 0) ? 'warning' : 'primary';
+    let classes = "badge m-2 badge-";
+    classes += this.state.count === 0 ? "warning" : "primary";
     return classes;
   }
 
-  formatCount(){
+  formatCount() {
     const { count } = this.state;
-    
-    return count === 0 ? 'Zero' : count;
+
+    return count === 0 ? "Zero" : count;
   }
 }
 
-export default Counter
+export default Counter;
